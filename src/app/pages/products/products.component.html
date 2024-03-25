@@ -1,0 +1,57 @@
+<div class="products_container">
+    <form class="products_container__menu" [formGroup]="filterForm">
+        <p>Категорії:</p>
+        <select class="form-select" aria-label="Default select example" formControlName="category">
+            <option [ngValue]="items" *ngFor="let items of category">{{items}}</option>
+        </select>
+        <p>Бренд:</p>
+        <select class="form-select" aria-label="Default select example" formControlName="brand">
+            <option [ngValue]="items"  *ngFor="let items of prod_brand">{{items}}</option>
+        </select>
+       
+        <div class="row">
+            <p>Від $</p>
+            <div class="col">
+                <input type="text" class="form-control" placeholder="min-price" aria-label="min-price" value="0" formControlName="min">
+            </div>
+            <p>До $</p>
+            <div class="col">
+                <input type="text" class="form-control" placeholder="max-price" aria-label="max-price" value="99999" formControlName="max">
+            </div>
+        </div>
+        <div class="text-center">
+            <button type="button" class="btn btn-outline-dark btn-filter" (click)="filter()">Фільтрувати</button>
+        </div>
+    </form>
+    <div class="products_container__product">
+        <div class="product__count" *ngFor="let items of products">
+            <div class="product__count_image">
+                <img [src]="items.api_featured_image" alt="">
+            </div>
+            <div class="product__count_text">
+                <h2>{{items.name}}</h2>
+                <p>Ціна: {{items.price}} {{items.price_sign}}</p>
+                <div class="text-center">
+                    <button type="button" class="btn btn-outline-dark text-center" (click)="addBasket(items)">Добавити в кошик</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="basket_list">
+        <div class="product" *ngFor="let prod of product_basket">
+            <div class="product_block1">
+                <img [src]="prod.api_featured_image" alt="">
+            </div>
+            <p>{{prod.name}}</p>
+            <div class="product_block2">
+                <p>Кількість:</p>
+                <div class="product_count">
+                    <p>{{prod.count}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+</div>

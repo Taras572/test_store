@@ -1,0 +1,33 @@
+<div class="basket_container">
+    <div class="basket_list">
+
+
+        <div class="container__block_contain_product">
+            <div class="product" *ngFor="let prod of products">
+                <div class="product_block1">
+                    <img [src]="prod.api_featured_image" alt="">
+                    <p>{{prod.name}}</p>
+                </div>
+                <div class="product_block2">
+                    <div class="product_count">
+                        <p>{{prod.count}}</p>
+                        <i class="uil uil-plus" (click)="cliker(prod, true)"></i>
+                        <i class="uil uil-minus" (click)="cliker(prod, false)"></i>
+                    </div>
+                    <div class="product_price">
+                        <p>{{prod.price}} {{prod.price_sign}}</p>
+
+                        <i class="uil uil-multiply" (click)="removeProduct(prod)"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="block__product_price">
+                <div class="product_price_container">
+                    <p>До оплати:</p>
+                    <h3>{{price}} $</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
